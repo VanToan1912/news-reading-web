@@ -1,6 +1,6 @@
 import React from 'react';
 import parse, { domToReact } from 'html-react-parser';
-import '../assets/styles/card.css';
+import './card.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
