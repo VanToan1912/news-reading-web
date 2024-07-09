@@ -1,4 +1,4 @@
-import '../css/Header.css'
+import './Header.css'
 import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faUser, faHouse } from '@fortawesome/free-solid-svg-icons'

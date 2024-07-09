@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios'
 import { useEffect, useState } from 'react';
-import Header from './components/Header';
-import Feed from './components/Feed';
-import ArticleCard from './components/Card';
+import Header from './components/Header/Header';
+// import Feed from './components/Feed';
+import ArticleCard from './components/Card/Card';
 
 function App() {
   const [articles, setArticles] = useState([]);
