@@ -1,7 +1,7 @@
 import React from 'react';
 import parse, { domToReact } from 'html-react-parser';
 
-const Feed = ({ content, contentSnippet, title, link, date }) => {
+const Card = ({ content, contentSnippet, title, link, date }) => {
   let formatted = { day: "numeric", month: "long", year: "numeric" };
   let articleDate = new Date(date).toLocaleDateString("en-GB", formatted);
 
@@ -31,4 +31,4 @@ const Feed = ({ content, contentSnippet, title, link, date }) => {
   );
 };
 
-export default Feed;
+export default Card;
