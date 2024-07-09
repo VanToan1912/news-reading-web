@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes, Link, Navigate } from "react-router-dom";
 import Navbar from './components/Navbar/Navbar';
 import CategoryPage from './components/CategoryPage/CategoryPage';
-import useArticles from './components/hooks/useArticles';
-import React from 'react';
+import useArticles from './components/hooks/UseArticles';
 import axios from 'axios'
-import { useEffect, useState } from 'react';
 import Header from './components/Header/Header';
 // import Feed from './components/Feed';
 import ArticleCard from './components/Card/Card';
@@ -38,7 +36,7 @@ function App() {
 
   return (
     <div>
-      <Header/>
+      <Header />
       <BrowserRouter>
         <Navbar feedURLs={feedURLs} setSelectedCategory={setSelectedCategory} />
         <Routes>
@@ -46,7 +44,7 @@ function App() {
           <Route path="*" element={<Navigate to="/home/Trang chủ" replace />} />
         </Routes>
       </BrowserRouter>
-      {articles.map((item, i) =>
+      {/* {articles.map((item, i) =>
         <ArticleCard
           key={i}
           content={item.item.content}
@@ -55,7 +53,7 @@ function App() {
           link={item.item.link}
           date={item.item.pubDate}
         />
-      )}
+      )} */}
     </div>
   );
 }
