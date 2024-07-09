@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios'
 import { useEffect, useState } from 'react';
-import Header from './components/Header';
-import Feed from './components/Feed';
+import Header from './components/Header/Header';
+// import Feed from './components/Feed';
+import ArticleCard from './components/Card/Card';
 
 function App() {
   const [articles, setArticles] = useState([]);
@@ -27,7 +28,7 @@ function App() {
     <div>
       <Header/>
       {articles.map((item, i) =>
-        <Feed
+        <ArticleCard
           key={i}
           content={item.item.content}
           contentSnippet={item.item.contentSnippet}
@@ -41,3 +42,6 @@ function App() {
 };
 
 export default App;
+// --------------------------
+
+
