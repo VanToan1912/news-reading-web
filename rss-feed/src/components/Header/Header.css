@@ -1,0 +1,57 @@
+.Header {
+  text-align: center;
+}
+
+.navbar-top-head {
+  background-color: #ff0000;
+  color: #ffffff;
+  padding: 10px 0;
+}
+
+.logo {
+  height: 50px;
+  margin: 0 20px;
+}
+
+.navbar-top-head,
+.navbar-bottom-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-top-links,
+.navbar-bottom-head a {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.navbar-top-links a,
+.navbar-bottom-head a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.navbar-bottom-head a {
+  padding: 5px 0px;
+  color: #000000;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.home-btn{
+  color: #ff0000;
+}
+
+.btn-subscribe {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  padding: 5px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 20px;
+  margin-left: 10px;
+}
