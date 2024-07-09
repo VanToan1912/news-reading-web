@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios'
 import { useEffect, useState } from 'react';
+import Header from './components/Header';
 import Feed from './components/Feed';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
   console.log(articles);
   return (
     <div>
+      <Header/>
       {articles.map((item, i) =>
         <Feed
           key={i}
@@ -39,3 +41,6 @@ function App() {
 };
 
 export default App;
+// --------------------------
+
+
