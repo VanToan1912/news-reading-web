@@ -3,6 +3,12 @@ import { BrowserRouter, Route, Routes, Link, Navigate } from "react-router-dom";
 import Navbar from './components/Navbar/Navbar';
 import CategoryPage from './components/CategoryPage/CategoryPage';
 import useArticles from './components/hooks/useArticles';
+import React from 'react';
+import axios from 'axios'
+import { useEffect, useState } from 'react';
+import Header from './components/Header/Header';
+// import Feed from './components/Feed';
+import ArticleCard from './components/Card/Card';
 
 const feedURLs = [
   { title: 'Trang chủ', url: 'https://tuoitre.vn/rss/tin-moi-nhat.rss' },
@@ -25,12 +31,14 @@ const feedURLs = [
   { title: 'Du lịch', url: 'https://tuoitre.vn/rss/du-lich.rss' },
 ];
 
+
 function App() {
   const [selectedCategory, setSelectedCategory] = useState('home');
   const articles = useArticles(feedURLs);
 
   return (
     <div>
+      <Header/>
       <BrowserRouter>
         <Navbar feedURLs={feedURLs} setSelectedCategory={setSelectedCategory} />
         <Routes>
@@ -38,8 +46,20 @@ function App() {
           <Route path="*" element={<Navigate to="/home/Trang chủ" replace />} />
         </Routes>
       </BrowserRouter>
+      {articles.map((item, i) =>
+        <ArticleCard
+          key={i}
+          content={item.item.content}
+          contentSnippet={item.item.contentSnippet}
+          title={item.item.title}
+          link={item.item.link}
+          date={item.item.pubDate}
+        />
+      )}
     </div>
   );
 }
 
 export default App;
+
+
