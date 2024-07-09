@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes, Link, Navigate } from "react-router-dom";
 import Navbar from './components/Navbar/Navbar';
 import CategoryPage from './components/CategoryPage/CategoryPage';
-import useArticles from './components/hooks/UseArticles';
+import useArticles from './components/hooks/useArticles';
 import axios from 'axios'
 import Header from './components/Header/Header';
 // import Feed from './components/Feed';
 import ArticleCard from './components/Card/Card';
+import Footer from './components/Footer/Footer';
 
 const feedURLs = [
   { title: 'Trang chủ', url: 'https://tuoitre.vn/rss/tin-moi-nhat.rss' },
@@ -44,16 +45,7 @@ function App() {
           <Route path="*" element={<Navigate to="/home/Trang chủ" replace />} />
         </Routes>
       </BrowserRouter>
-      {/* {articles.map((item, i) =>
-        <ArticleCard
-          key={i}
-          content={item.item.content}
-          contentSnippet={item.item.contentSnippet}
-          title={item.item.title}
-          link={item.item.link}
-          date={item.item.pubDate}
-        />
-      )} */}
+      <Footer />
     </div>
   );
 }
