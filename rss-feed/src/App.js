@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes, Link, Navigate } from "react-router-dom";
 import Navbar from './components/Navbar/Navbar';
 import CategoryPage from './components/CategoryPage/CategoryPage';
-import useArticles from './components/hooks/UseArticles';
+import useArticles from './components/hooks/useArticles';
 import axios from 'axios'
 import Header from './components/Header/Header';
 // import Feed from './components/Feed';
