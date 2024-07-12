@@ -10,8 +10,8 @@ const DetailPage = () => {
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const url = query.get('url');
-  
-  const [article, setArticle] = useState({ title: '', content: '' ,detailInfo: '' });
+
+  const [article, setArticle] = useState({ title: '', content: '', detailInfo: '' });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -26,7 +26,7 @@ const DetailPage = () => {
         setLoading(false);
       }
     };
-    
+
     fetchArticle();
   }, [url]);
 
@@ -35,10 +35,10 @@ const DetailPage = () => {
 
   return (
     <div className="detail-page">
-    <h1>{article.title}</h1>
-    <div className="detail-info">{article.detailInfo ? parse(String(article.detailInfo)) : ''}</div>
-    <div className="content">{article.content ? parse(String(article.content)) : ''}</div>
-  </div>
+      <h1>{article.title}</h1>
+      <div className="detail-info">{article.detailInfo ? parse(String(article.detailInfo)) : ''}</div>
+      <div className="content">{article.content ? parse(String(article.content)) : ''}</div>
+    </div>
   );
 };
 
