@@ -8,6 +8,7 @@ import Header from './components/Header/Header';
 // import Feed from './components/Feed';
 import ArticleCard from './components/Card/Card';
 import Footer from './components/Footer/Footer';
+import DetailPage   from './components/DetailPage/DetailPage';
 
 const feedURLs = [
   { title: 'Trang chủ', url: 'https://tuoitre.vn/rss/tin-moi-nhat.rss' },
@@ -34,7 +35,7 @@ const feedURLs = [
 function App() {
   const [selectedCategory, setSelectedCategory] = useState('home');
   const articles = useArticles(feedURLs);
-
+  // console.log(articles);
   return (
     <div>
       <Header />
@@ -43,6 +44,7 @@ function App() {
         <Routes>
           <Route path="home/:category" element={<CategoryPage articles={articles[selectedCategory] || []} />} />
           <Route path="*" element={<Navigate to="/home/Trang chủ" replace />} />
+          <Route path="/article" element={<DetailPage />} />
         </Routes>
       </BrowserRouter>
       <Footer />
