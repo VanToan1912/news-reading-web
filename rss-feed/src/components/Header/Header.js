@@ -3,9 +3,7 @@ import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faUser, faHouse } from '@fortawesome/free-solid-svg-icons'
 
-
 const Header = () => {
-
     return (
         <div className="Header">
             <header className="navbar-head">
