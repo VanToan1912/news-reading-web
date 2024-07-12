@@ -5,10 +5,9 @@ import CategoryPage from './components/CategoryPage/CategoryPage';
 import useArticles from './components/hooks/useArticles';
 import axios from 'axios'
 import Header from './components/Header/Header';
-// import Feed from './components/Feed';
 import ArticleCard from './components/Card/Card';
 import Footer from './components/Footer/Footer';
-import DetailPage   from './components/DetailPage/DetailPage';
+import DetailPage from './components/DetailPage/DetailPage';
 
 const feedURLs = [
   { title: 'Trang chủ', url: 'https://tuoitre.vn/rss/tin-moi-nhat.rss' },
@@ -42,8 +41,8 @@ function App() {
       <BrowserRouter>
         <Navbar feedURLs={feedURLs} setSelectedCategory={setSelectedCategory} />
         <Routes>
-          <Route path="home/:category" element={<CategoryPage articles={articles[selectedCategory] || []} />} />
-          <Route path="*" element={<Navigate to="/home/Trang chủ" replace />} />
+          <Route path="/:category" element={<CategoryPage articles={articles[selectedCategory] || []} />} />
+          <Route path="/" element={<Navigate to="/Trang chủ" replace />} />
           <Route path="/article" element={<DetailPage />} />
         </Routes>
       </BrowserRouter>

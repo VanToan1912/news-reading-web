@@ -64,14 +64,8 @@ const Card = ({ content, contentSnippet, title, link, date }) => {
               {parse(truncate(contentSnippet, 150), options)}
             </p>
           </div>
-
         </div>
-
-
       </div>
-
-
-
     </div>
   );
 };
