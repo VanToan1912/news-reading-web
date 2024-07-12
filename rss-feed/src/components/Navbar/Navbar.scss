@@ -1,3 +1,37 @@
-.title {
-  font-size: 40px;
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+.cate-name {
+  text-decoration: none;
+  color: #000;
+  transition: 0.3s ease-in-out all;
+  font-weight: bold;
+  font-size: 12px;
+  text-transform: uppercase;
+  padding: 8px;
+  border: 1px solid #3c3c3c;
+  margin: 2px;
+
+  &:hover {
+    color: #DE0B13;
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+.item {
+  .title {
+    font-size: 20px;
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      color: #DE0B13;
+      transition: all 0.3s ease-in-out;
+    }
+  }
 }

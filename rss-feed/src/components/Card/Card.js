@@ -23,11 +23,10 @@ const Card = ({ content, contentSnippet, title, link, date }) => {
 
 
   return (
-    <div>
-      <h3>{title}</h3>
-      <div>{parse(content, options)}</div>
+    <div className={`item`}>
+      <a href={link} target="_blank" rel="noopener noreferrer" className='title'>{title}</a>
+      <div className='content'>{parse(content, options)}</div>
       <p>{articleDate}</p>
-      <a href={link} target="_blank" rel="noopener noreferrer">{link}</a>
 
     </div>
   );

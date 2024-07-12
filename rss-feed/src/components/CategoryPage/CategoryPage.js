@@ -3,7 +3,7 @@ import Card from '../Card/Card.js';
 
 const CategoryPage = ({ articles }) => {
   return (
-    <div>
+    <div className={`container`}>
       {articles.map((item, i) => (
         <Card
           key={i}
