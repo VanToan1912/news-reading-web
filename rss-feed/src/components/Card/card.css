@@ -1,80 +1,66 @@
-body{
-    margin: 0;
-    font-family: var(--bs-body-font-family);
-    font-size: var(--bs-body-font-size);
-    font-weight: var(--bs-body-font-weight);
-    line-height: var(--bs-body-line-height);
-    color: var(--bs-body-color);
-    text-align: var(--bs-body-text-align);
-    background-color: var(--bs-body-bg);
-    -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: transparent;
+body {
+  margin: 0;
+  font-family: var(--bs-body-font-family);
+  font-size: var(--bs-body-font-size);
+  font-weight: var(--bs-body-font-weight);
+  line-height: var(--bs-body-line-height);
+  color: var(--bs-body-color);
+  text-align: var(--bs-body-text-align);
+  background-color: var(--bs-body-bg);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .article-card {
-    border: 1px solid #ddd;
-    padding: 26px;
-    margin: 16px 0;
-    max-width: 588px;
-    /* max-height: 232px; */
-    flex-wrap: nowrap;
-       
-  }
-  
-
+  border: 1px solid #ddd;
+  padding: 26px;
+  margin: 16px 0;
+  max-width: 588px;
+  /* max-height: 232px; */
+  flex-wrap: nowrap;
+}
+.article-card .thumnails {
+  width: 270px;
+  /* max-width: 170px; */
+}
 .article-card .thumnails img {
-    width: 100%;
-    max-width: 100%;
-    display: block;
-    image-rendering: -webkit-optimize-contrast;
-    color: transparent;
-    margin-top: 15px;
-    
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  image-rendering: -webkit-optimize-contrast;
+  color: transparent;
+  margin-top: 15px;
 }
-
-.article-card .thumnails{
-    width: 270px;
-    /* max-width: 170px; */
+.article-card .box-title-text {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #222;
+  display: block;
 }
-
-.article-card .box-text{
-
-}
-
-.article-card .box-title-text{
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 24px;
-    color: #222;
-    display: block;
-}
-
 .article-card a {
-    color: #222;
-    text-decoration: none;
-  }
-  
-  .article-card a:hover {
-    color: red;
-  }
+  color: #222;
+  text-decoration: none;
+}
+.article-card a:hover {
+  color: red;
+}
 
+.title-article {
+  font-size: 22px;
+  line-height: 28px;
+  color: #222;
+  font-weight: 700;
+  display: block;
+}
 
-  .title-article{
-    font-size: 22px;
-    line-height: 28px;
-    color: #222;
-    font-weight: 700;
-    display: block;
-  }
-
-  .content-snippet{
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 22px;
-    color: #565656;
-    display: block;
-    overflow: hidden;
-    max-height: 110px;
-    max-width: 588px;
-  }
-  
+.content-snippet {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #565656;
+  display: block;
+  overflow: hidden;
+  max-height: 110px;
+  max-width: 588px;
+}/*# sourceMappingURL=Card.css.map */
