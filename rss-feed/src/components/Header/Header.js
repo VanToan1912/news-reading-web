@@ -4,22 +4,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faUser, faHouse } from '@fortawesome/free-solid-svg-icons'
 
 const Header = () => {
-    return (
-        <div className="Header">
-            <header className="navbar-head">
-                <div className="navbar-top-head">
-                    <img src="https://static-tuoitre.tuoitre.vn/tuoitre/web_images/logottonew.svg" alt="Tuoi Tre Online" className="logo" />
-                    <div className="navbar-top-links">
-                        <a href="#podcast">Podcast</a>
-                        <a href="#youtube">YouTube</a>
-                        <a href="#can-biet">Cần biết</a>
-                        <a href="#rao-vat">Rao vặt</a>
-                        <a href="#tim-kiem"><FontAwesomeIcon icon={faMagnifyingGlass} /></a>
-                        {/* <a href="#ca-nhan"><FontAwesomeIcon icon={faUser} /></a> */}
-                        <button className="btn-subscribe">Đăng ký Tuổi Trẻ Sao</button>
-                    </div>
-                </div>
-                <div className="navbar-bottom-head">
+  return (
+    <div className="Header">
+      <header className="navbar-head">
+        <div className="navbar-top-head">
+          <img src="https://static-tuoitre.tuoitre.vn/tuoitre/web_images/logottonew.svg" alt="Tuoi Tre Online" className="logo" />
+          <div className="navbar-top-links">
+            <a href="#podcast">Podcast</a>
+            <a href="#youtube">YouTube</a>
+            <a href="#can-biet">Cần biết</a>
+            <a href="#rao-vat">Rao vặt</a>
+            <a href="#tim-kiem"><FontAwesomeIcon icon={faMagnifyingGlass} /></a>
+            {/* <a href="#ca-nhan"><FontAwesomeIcon icon={faUser} /></a> */}
+            <button className="btn-subscribe">Đăng ký Tuổi Trẻ Sao</button>
+          </div>
+        </div>
+        {/* <div className="navbar-bottom-head">
                     <a href="#trang-chu" className="home-btn"><FontAwesomeIcon icon={faHouse} color='#ff0000' fontSize={20} /></a>
                     <a href="#video">VIDEO</a>
                     <a href="#thoi-su">THỜI SỰ</a>
@@ -38,10 +38,10 @@ const Header = () => {
                     <a href="#suc-khoe">SỨC KHỎE</a>
                     <a href="#giai-that">GIẢI THẬT</a>
                     <a href="#ban-doc">BẠN ĐỌC</a>
-                </div>
-            </header>
-        </div>
-    )
+                </div> */}
+      </header>
+    </div>
+  )
 }
 
 export default Header;
