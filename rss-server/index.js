@@ -60,7 +60,7 @@ app.get('/api/article', async (req, res) => {
     const formattedDetailInfo = typeof detailInfo === 'string' ? detailInfo : String(detailInfo);
     const content = $('.detail-cmain').html();
 
-    res.json({ title, content ,formattedDetailInfo});
+    res.json({ title, content, formattedDetailInfo });
   } catch (error) {
     console.error('Error fetching article:', error);
     res.status(500).send('Error fetching article');
