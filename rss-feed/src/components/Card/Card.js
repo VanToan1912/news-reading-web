@@ -58,7 +58,7 @@ const Card = ({ content, contentSnippet, title, link, date }) => {
                {truncate(title, 20)}
             </h3>
        </Link>
-        <div className="content-s">
+          <div className="content-s">
           <div className="content-snippet">
             <p >
               {parse(truncate(contentSnippet, 150), options)}
