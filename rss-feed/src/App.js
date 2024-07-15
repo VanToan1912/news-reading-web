@@ -39,6 +39,7 @@ function App() {
   return (
     <div>
       <Header />
+      <ThemeToggle />
       <BrowserRouter>
         <Navbar feedURLs={feedURLs} setSelectedCategory={setSelectedCategory} />
         <Routes>
@@ -47,7 +48,6 @@ function App() {
           <Route path="/article" element={<DetailPage />} />
         </Routes>
       </BrowserRouter>
-      <ThemeToggle />
       <Footer />
     </div>
   );
