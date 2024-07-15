@@ -1,6 +1,9 @@
 import cors from "cors";
 import express from "express";
 import RSSParser from "rss-parser";
+import axios from 'axios';
+import cheerio from 'cheerio';
+
 const feedURLs = [
   "https://tuoitre.vn/rss/tin-moi-nhat.rss",
   "https://tuoitre.vn/rss/the-gioi.rss",
@@ -43,6 +46,25 @@ app.use(cors());
 
 app.get('/', (req, res) => {
   res.send(articles);
+});
+
+app.get('/api/article', async (req, res) => {
+  const articleUrl = req.query.url;
+  try {
+    const response = await axios.get(articleUrl);
+    const html = response.data;
+    const $ = cheerio.load(html);
+
+    const title = $('h1.article-title').text();
+    const detailInfo = $('.detail-info').html();
+    const formattedDetailInfo = typeof detailInfo === 'string' ? detailInfo : String(detailInfo);
+    const content = $('.detail-cmain').html();
+
+    res.json({ title, content, formattedDetailInfo });
+  } catch (error) {
+    console.error('Error fetching article:', error);
+    res.status(500).send('Error fetching article');
+  }
 });
 
 

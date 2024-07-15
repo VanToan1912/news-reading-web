@@ -7,17 +7,16 @@
   color: #ffffff;
   padding: 10px 0;
 }
+.navbar-top-head,
+.navbar-top-head .navbar-bottom-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 .logo {
   height: 50px;
   margin: 0 20px;
-}
-
-.navbar-top-head,
-.navbar-bottom-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .navbar-top-links,
@@ -33,9 +32,9 @@
   text-decoration: none;
   margin: 0 10px;
 }
-
-.navbar-bottom-head a {
-  padding: 5px 0px;
+.navbar-top-links a.navbar-bottom-head,
+.navbar-bottom-head a.navbar-bottom-head {
+  padding: 5px 0;
   color: #000000;
   font-size: 10px;
   font-weight: bold;
@@ -55,7 +54,6 @@
   margin-right: 20px;
   margin-left: 10px;
 }
-
 .btn-subscribe:hover {
   background-color: #0056b3;
-}
+}/*# sourceMappingURL=Header.css.map */
