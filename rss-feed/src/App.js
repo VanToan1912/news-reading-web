@@ -8,6 +8,7 @@ import Header from './components/Header/Header';
 import ArticleCard from './components/Card/Card';
 import Footer from './components/Footer/Footer';
 import DetailPage from './components/DetailPage/DetailPage';
+import ThemeToggle from './components/ThemeToggle/ThemeToggle';
 
 const feedURLs = [
   { title: 'Trang chủ', url: 'https://tuoitre.vn/rss/tin-moi-nhat.rss' },
@@ -46,6 +47,7 @@ function App() {
           <Route path="/article" element={<DetailPage />} />
         </Routes>
       </BrowserRouter>
+      <ThemeToggle />
       <Footer />
     </div>
   );
