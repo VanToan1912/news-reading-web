@@ -1,3 +1,12 @@
 body {
   background-color: aliceblue;
-}/*# sourceMappingURL=DetailPage.css.map */
+}
+
+.detail-author {
+  background-color: black;
+}
+.detail-author .author-info {
+  font-size: 200px;
+}
+
+/*# sourceMappingURL=DetailPage.css.map */

@@ -19,12 +19,10 @@ body {
   /* max-height: 232px; */
   flex-wrap: nowrap;
 }
-
 .article-card .thumnails {
   width: 270px;
   /* max-width: 170px; */
 }
-
 .article-card .thumnails img {
   width: 100%;
   max-width: 100%;
@@ -33,7 +31,6 @@ body {
   color: transparent;
   margin-top: 15px;
 }
-
 .article-card .box-title-text {
   font-weight: 500;
   font-size: 18px;
@@ -41,12 +38,10 @@ body {
   color: #222;
   display: block;
 }
-
 .article-card a {
   color: #222;
   text-decoration: none;
 }
-
 .article-card a:hover {
   color: red;
 }
@@ -68,6 +63,4 @@ body {
   overflow: hidden;
   max-height: 110px;
   max-width: 588px;
-}
-
-/*# sourceMappingURL=Card.css.map */
+}/*# sourceMappingURL=Card.css.map */

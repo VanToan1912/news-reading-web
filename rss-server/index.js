@@ -3,6 +3,8 @@ import express from "express";
 import RSSParser from "rss-parser";
 import axios from 'axios';
 import cheerio, { text } from 'cheerio';
+import { JSDOM } from 'jsdom';
+
 
 const feedURLs = [
   "https://tuoitre.vn/rss/tin-moi-nhat.rss",
@@ -48,50 +50,32 @@ app.get('/', (req, res) => {
   res.send(articles);
 });
 
+
+
 app.get('/api/article', async (req, res) => {
-  const articleUrl = req.query.url;
+  const { url } = req.query;
+  console.log('Received request for article:', url);
+
   try {
-    const response = await axios.get(articleUrl);
+    const response = await axios.get(decodeURIComponent(url));
     const html = response.data;
-    const $ = cheerio.load(html);
+    const dom = new JSDOM(html);
+    const document = dom.window.document;
+    const title = document.querySelector('h1')?.textContent || '';
+    const body = document.body.innerHTML;
 
-    const title = $('h1.article-title').text();
-    const detailInfo = $('.detail-info').html();
-    const formattedDetailInfo = typeof detailInfo === 'string' ? detailInfo : String(detailInfo);
-    const detailSapo = $('h2.detail-sapo').text();
-    const content = [];
-    $('.detail-content').children().each((i, elem) => {
-      if ($(elem).is('p')) {
-        content.push({
-          tag: 'p',
-          text: $(elem).text(),
-          class: 'content-text-p'
-        });
-      } else if ($(elem).is('figure')) {
-        content.push({
-          tag: 'figure',
-          html:  $.html(elem),
-          class: 'content-figure-f'
-        });
-      } else if ($(elem).is('h2')) {
-        content.push({
-          tag: 'h2',
-          html: $.html(elem),
-          class: 'content-subtitle'
-        });
-      }
-    });
+    // Lấy origin từ URL gốc trong RSS
+    const parsedUrl = new URL(decodeURIComponent(url));
+    const origin = `${parsedUrl.protocol}//${parsedUrl.host}`;
 
-
-
-
-    res.json({ title,detailSapo, content ,formattedDetailInfo});
-
+    res.json({ title, body, origin });
   } catch (error) {
     console.error('Error fetching article:', error);
-    res.status(500).send('Error fetching article');
+    res.status(error.response?.status || 500).send('Error fetching article');
   }
 });
+
+
 
 
 const port = 4000;
