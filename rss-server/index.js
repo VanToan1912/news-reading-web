@@ -70,7 +70,7 @@ app.get('/api/article', async (req, res) => {
       } else if ($(elem).is('figure')) {
         content.push({
           tag: 'figure',
-          html:  $.html(elem),
+          html: $.html(elem),
           class: 'content-figure-f'
         });
       } else if ($(elem).is('h2')) {
@@ -81,11 +81,7 @@ app.get('/api/article', async (req, res) => {
         });
       }
     });
-
-
-
-
-    res.json({ title,detailSapo, content ,formattedDetailInfo});
+    res.json({ title, detailSapo, content, formattedDetailInfo });
 
   } catch (error) {
     console.error('Error fetching article:', error);
