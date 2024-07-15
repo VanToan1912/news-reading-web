@@ -23,15 +23,24 @@ const truncate = (content, maxLength) => {
 };
 
 const Card = ({ content, contentSnippet, title, link, date }) => {
-  // let formatted = { day: "numeric", month: "long", year: "numeric" };
-  // let articleDate = new Date(date).toLocaleDateString("en-GB", formatted);
-
   const options = {
     replace: ({ name, attribs, children }) => {
       if (!attribs) return;
       if (name === 'a') {
         return (
-          <a href={attribs.href} target="_blank" rel="noopener noreferrer">
+          <a
+            href={attribs.href}
+            onClick={(e) => {
+              if (!attribs.href.startsWith('http')) {
+                e.preventDefault();
+                console.error('Invalid link:', attribs.href);
+                return;
+              }
+              // Handle other conditions if needed
+            }}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             {domToReact(children, options)}
           </a>
         );
@@ -44,7 +53,6 @@ const Card = ({ content, contentSnippet, title, link, date }) => {
 
   const imageUrl = extractImageUrl(content);
 
-
   return (
     <div className="article-card row">
       <div className="col thumnails">
@@ -53,14 +61,15 @@ const Card = ({ content, contentSnippet, title, link, date }) => {
         </Link>
       </div>
       <div className="col box-text">
-       <Link to={`/article?url=${encodeURIComponent(link)}`}  className="title-article">
-            <h3 className="box-title-text" >
-               {truncate(title, 20)}
-            </h3>
-       </Link>
-          <div className="content-s">
+        <Link to={`/article?url=${encodeURIComponent(link)}`} className="title-article">
+          <h3 className="box-title-text">
+            {truncate(title, 20)}
+          </h3>
+        </Link>
+        <div className="content-s">
+
           <div className="content-snippet">
-            <p >
+            <p>
               {parse(truncate(contentSnippet, 150), options)}
             </p>
           </div>

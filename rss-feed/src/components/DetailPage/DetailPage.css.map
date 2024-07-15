@@ -1,1 +1,5 @@
+<<<<<<< HEAD
+{"version":3,"sources":["DetailPage.scss","DetailPage.css"],"names":[],"mappings":"AAAA;EACI,2BAAA;ACCJ;;ADEA;EACI,uBAAA;ACCJ;ADAI;EACI,gBAAA;ACER","file":"DetailPage.css"}
+=======
 {"version":3,"sources":["DetailPage.scss","DetailPage.css"],"names":[],"mappings":"AAAA;EACI,2BAAA;ACCJ","file":"DetailPage.css"}
+>>>>>>> ca45cf9e0c120e7f4780704f6645854bc9a9428f

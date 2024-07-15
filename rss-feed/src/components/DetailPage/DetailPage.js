@@ -1,29 +1,39 @@
 // components/DetailPage/DetailPage.js
 
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import parse from 'html-react-parser';
 import './DetailPage.css';
 // @ts-ignore
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 const DetailPage = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const query = new URLSearchParams(location.search);
-  const url = query.get('url');
-  const [article, setArticle] = useState({ title: '',detailSapo : '', content: [] ,formattedDetailInfo: '' });
+  const initialUrl = query.get('url');
+  const [url, setUrl] = useState(initialUrl);
+    const [article, setArticle] = useState({ title: '', body: '', origin: '' });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchArticle = async () => {
+      if (!url) return; // Kiểm tra nếu không có URL
+
       try {
         const response = await axios.get(`http://localhost:4000/api/article?url=${encodeURIComponent(url)}`);
-        setArticle(response.data);
-        setLoading(false);
+        if (response.status === 200) {
+          setArticle(response.data);
+          setLoading(false);
+        } else {
+          setError('Không tìm thấy nội dung bài báo.');
+          setLoading(false);
+        }
       } catch (err) {
-        setError(err.message);
+        setError(`Lỗi khi tải bài báo: ${err.message}`);
         setLoading(false);
       }
     };
@@ -31,28 +41,28 @@ const DetailPage = () => {
     fetchArticle();
   }, [url]);
 
+  const handleLinkClick = async (e) => {
+    e.preventDefault();
+    if (e.target.tagName === 'A' && e.target.href) {
+      const newUrl = new URL(e.target.href);
+      const pathname = newUrl.pathname;
+      // console.log(article.origin);
+      
+      // Mở liên kết trong tab mới
+      window.open(`/article?url=${encodeURIComponent(article.origin.toString()+pathname)}`, '_blank');
+    }
+  };
+
+  
+  
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className="detail-page">
+    <div className="detail-page" onClick={handleLinkClick}>
       <h1>{article.title}</h1>
-      <h2>{article.detailSapo}</h2>
-      <div className="detail-info">{article.formattedDetailInfo ? parse(String(article.formattedDetailInfo)) : ''}</div>
-      <div className="content">
-        {/* Sử dụng parse từ html-react-parser để phân tích các phần tử */}
-        {article.content && article.content.map((item, index) => {
-          if (item.tag === 'p') {
-            return <p key={index} className="content-text-p">{item.text}</p>;
-          } else if (item.tag === 'figure') {
-            return <figure key={index} className="content-figure-f" dangerouslySetInnerHTML={{ __html: item.html }} />;
-          } else if (item.tag === 'h2') {
-            return <h2 key={index} className="content-subtitle" dangerouslySetInnerHTML={{ __html: item.html }} />;
-          } else {
-            return null;
-          }
-        })}
-      </div>
+      <div  dangerouslySetInnerHTML={{ __html: article.body }}></div>
     </div>
   );
 };
