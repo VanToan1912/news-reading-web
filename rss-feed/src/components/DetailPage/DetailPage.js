@@ -15,7 +15,7 @@ const DetailPage = () => {
   const query = new URLSearchParams(location.search);
   const initialUrl = query.get('url');
   const [url, setUrl] = useState(initialUrl);
-    const [article, setArticle] = useState({ title: '', body: '', origin: '' });
+    const [article, setArticle] = useState({ body: '', origin: '' ,content : ''});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -41,6 +41,7 @@ const DetailPage = () => {
     fetchArticle();
   }, [url]);
 
+  
   const handleLinkClick = async (e) => {
     e.preventDefault();
     if (e.target.tagName === 'A' && e.target.href) {
@@ -53,16 +54,13 @@ const DetailPage = () => {
     }
   };
 
-  
-  
-
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
   return (
     <div className="detail-page" onClick={handleLinkClick}>
-      <h1>{article.title}</h1>
-      <div  dangerouslySetInnerHTML={{ __html: article.body }}></div>
+      {/* <h1>{article.title}</h1> */}
+      <div  dangerouslySetInnerHTML={{ __html: article.content }}></div>
     </div>
   );
 };

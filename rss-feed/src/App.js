@@ -32,7 +32,7 @@ const feedURLs = [
 
 
 function App() {
-  const [selectedCategory, setSelectedCategory] = useState('home');
+  const [selectedCategory, setSelectedCategory] = useState('Trang chủ');
   const articles = useArticles(feedURLs);
   // console.log(articles);
   return (
