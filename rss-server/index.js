@@ -75,8 +75,6 @@ app.get('/api/article', async (req, res) => {
 });
 
 
-
-
 const port = 4000;
 const server = app.listen(port, () => {
   console.log(`App is listening at http://localhost:${port}`);
