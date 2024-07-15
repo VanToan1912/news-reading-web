@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons'
+import './ThemeToggle.css'
 
 const ThemeToggle = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -18,9 +22,9 @@ const ThemeToggle = () => {
   };
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '20px' }}>
-      <button onClick={toggleTheme} style={{ padding: '10px', fontSize: '16px' }}>
-        Toggle to {darkMode ? 'Light' : 'Dark'} Mode
+    <div>
+      <button className='themeToggleBtn' onClick={toggleTheme}>
+        {darkMode ? <FontAwesomeIcon icon={faSun} /> : <FontAwesomeIcon icon={faMoon} />}
       </button>
     </div>
   );
