@@ -23,11 +23,18 @@ const truncate = (content, maxLength) => {
 };
 
 const Card = ({ content, contentSnippet, title, link, date }) => {
+<<<<<<< HEAD
+=======
+  // let formatted = { day: "numeric", month: "long", year: "numeric" };
+  // let articleDate = new Date(date).toLocaleDateString("en-GB", formatted);
+
+>>>>>>> ca45cf9e0c120e7f4780704f6645854bc9a9428f
   const options = {
     replace: ({ name, attribs, children }) => {
       if (!attribs) return;
       if (name === 'a') {
         return (
+<<<<<<< HEAD
           <a
             href={attribs.href}
             onClick={(e) => {
@@ -41,6 +48,9 @@ const Card = ({ content, contentSnippet, title, link, date }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
+=======
+          <a href={attribs.href} target="_blank" rel="noopener noreferrer">
+>>>>>>> ca45cf9e0c120e7f4780704f6645854bc9a9428f
             {domToReact(children, options)}
           </a>
         );
@@ -53,6 +63,10 @@ const Card = ({ content, contentSnippet, title, link, date }) => {
 
   const imageUrl = extractImageUrl(content);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ca45cf9e0c120e7f4780704f6645854bc9a9428f
   return (
     <div className="article-card row">
       <div className="col thumnails">
@@ -61,6 +75,7 @@ const Card = ({ content, contentSnippet, title, link, date }) => {
         </Link>
       </div>
       <div className="col box-text">
+<<<<<<< HEAD
         <Link to={`/article?url=${encodeURIComponent(link)}`} className="title-article">
           <h3 className="box-title-text">
             {truncate(title, 20)}
@@ -69,6 +84,16 @@ const Card = ({ content, contentSnippet, title, link, date }) => {
         <div className="content-s">
           <div className="content-snippet">
             <p>
+=======
+       <Link to={`/article?url=${encodeURIComponent(link)}`}  className="title-article">
+            <h3 className="box-title-text" >
+               {truncate(title, 20)}
+            </h3>
+       </Link>
+        <div className="content-s">
+          <div className="content-snippet">
+            <p >
+>>>>>>> ca45cf9e0c120e7f4780704f6645854bc9a9428f
               {parse(truncate(contentSnippet, 150), options)}
             </p>
           </div>

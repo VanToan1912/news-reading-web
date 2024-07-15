@@ -19,10 +19,18 @@ body {
   /* max-height: 232px; */
   flex-wrap: nowrap;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> ca45cf9e0c120e7f4780704f6645854bc9a9428f
 .article-card .thumnails {
   width: 270px;
   /* max-width: 170px; */
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> ca45cf9e0c120e7f4780704f6645854bc9a9428f
 .article-card .thumnails img {
   width: 100%;
   max-width: 100%;
@@ -31,6 +39,10 @@ body {
   color: transparent;
   margin-top: 15px;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> ca45cf9e0c120e7f4780704f6645854bc9a9428f
 .article-card .box-title-text {
   font-weight: 500;
   font-size: 18px;
@@ -38,10 +50,18 @@ body {
   color: #222;
   display: block;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> ca45cf9e0c120e7f4780704f6645854bc9a9428f
 .article-card a {
   color: #222;
   text-decoration: none;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> ca45cf9e0c120e7f4780704f6645854bc9a9428f
 .article-card a:hover {
   color: red;
 }
@@ -63,4 +83,10 @@ body {
   overflow: hidden;
   max-height: 110px;
   max-width: 588px;
+<<<<<<< HEAD
 }/*# sourceMappingURL=Card.css.map */
+=======
+}
+
+/*# sourceMappingURL=Card.css.map */
+>>>>>>> ca45cf9e0c120e7f4780704f6645854bc9a9428f
