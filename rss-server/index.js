@@ -2,7 +2,7 @@ import cors from "cors";
 import express from "express";
 import RSSParser from "rss-parser";
 import axios from 'axios';
-import cheerio from 'cheerio';
+import cheerio, { text } from 'cheerio';
 
 const feedURLs = [
   "https://tuoitre.vn/rss/tin-moi-nhat.rss",
@@ -58,9 +58,34 @@ app.get('/api/article', async (req, res) => {
     const title = $('h1.article-title').text();
     const detailInfo = $('.detail-info').html();
     const formattedDetailInfo = typeof detailInfo === 'string' ? detailInfo : String(detailInfo);
-    const content = $('.detail-cmain').html();
+    const detailSapo = $('h2.detail-sapo').text();
+    const content = [];
+    $('.detail-content').children().each((i, elem) => {
+      if ($(elem).is('p')) {
+        content.push({
+          tag: 'p',
+          text: $(elem).text(),
+          class: 'content-text-p'
+        });
+      } else if ($(elem).is('figure')) {
+        content.push({
+          tag: 'figure',
+          html:  $.html(elem),
+          class: 'content-figure-f'
+        });
+      } else if ($(elem).is('h2')) {
+        content.push({
+          tag: 'h2',
+          html: $.html(elem),
+          class: 'content-subtitle'
+        });
+      }
+    });
 
-    res.json({ title, content ,formattedDetailInfo});
+
+
+
+    res.json({ title,detailSapo, content ,formattedDetailInfo});
   } catch (error) {
     console.error('Error fetching article:', error);
     res.status(500).send('Error fetching article');

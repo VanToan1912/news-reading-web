@@ -1,6 +1,7 @@
 import React from 'react';
 import parse, { domToReact } from 'html-react-parser';
 import './Card.css';
+// @ts-ignore
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 
@@ -22,8 +23,8 @@ import { Link } from 'react-router-dom';
   };
 
 const Card = ({ content, contentSnippet, title, link, date }) => {
-  let formatted = { day: "numeric", month: "long", year: "numeric" };
-  let articleDate = new Date(date).toLocaleDateString("en-GB", formatted);
+  // let formatted = { day: "numeric", month: "long", year: "numeric" };
+  // let articleDate = new Date(date).toLocaleDateString("en-GB", formatted);
 
   const options = {
     replace: ({ name, attribs, children }) => {
