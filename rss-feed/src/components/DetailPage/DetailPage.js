@@ -12,8 +12,6 @@ const DetailPage = () => {
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const url = query.get('url');
-  
-
   const [article, setArticle] = useState({ title: '',detailSapo : '', content: [] ,formattedDetailInfo: '' });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -29,7 +27,7 @@ const DetailPage = () => {
         setLoading(false);
       }
     };
-    
+
     fetchArticle();
   }, [url]);
 

@@ -86,6 +86,7 @@ app.get('/api/article', async (req, res) => {
 
 
     res.json({ title,detailSapo, content ,formattedDetailInfo});
+
   } catch (error) {
     console.error('Error fetching article:', error);
     res.status(500).send('Error fetching article');

@@ -7,21 +7,31 @@ const Navbar = ({ feedURLs, setSelectedCategory }) => {
 
   const handleNavLinkClick = (title) => {
     setSelectedCategory(title);
-    navigate(`/home/${title}`);
+    navigate(`/${title}`);
   };
+
+  let newsList =
+    <nav className='navbar justify-content-center mb-5'>
+      <ul className={` d-flex`}>
+        {feedURLs.map(feed => (
+          <li className={`list-unstyled mx-2`}>
+            <NavLink
+              key={feed.url}
+              to={`/${feed.title}`}
+              className={`cate-name w-25 ${classes.navLink}`}
+              onClick={() => handleNavLinkClick(feed.title)}
+            >
+              {feed.title}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+    </nav>;
+
   return (
-    <nav>
-      {feedURLs.map(feed => (
-        <NavLink
-          key={feed.url}
-          to={`/home/${feed.title}`}
-          className={`title ${classes.navLink}`}
-          onClick={() => handleNavLinkClick(feed.title)}
-        >
-          {feed.title}
-        </NavLink>
-      ))}
-    </nav>
+    <div className='fluid-container'>
+      {newsList}
+    </div>
   );
 };
 
