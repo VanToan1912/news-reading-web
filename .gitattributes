@@ -1,3 +1,0 @@
-*.pack filter=lfs diff=lfs merge=lfs -text
-rss-feed/node_modules/.cache/default-development/*.pack filter=lfs diff=lfs merge=lfs -text
-rss-feed/node_modules/.cache/default-development/14.pack filter=lfs diff=lfs merge=lfs -text

@@ -54,21 +54,20 @@ app.get('/', (req, res) => {
 
 app.get('/api/article', async (req, res) => {
   const { url } = req.query;
-  console.log('Received request for article:', url);
-
   try {
     const response = await axios.get(decodeURIComponent(url));
     const html = response.data;
     const dom = new JSDOM(html);
     const document = dom.window.document;
-    const title = document.querySelector('h1')?.textContent || '';
+    // const title = document.querySelector('h1')?.textContent || '';
     const body = document.body.innerHTML;
+    const content = document.querySelector('.detail__cmain').innerHTML;
 
     // Lấy origin từ URL gốc trong RSS
     const parsedUrl = new URL(decodeURIComponent(url));
     const origin = `${parsedUrl.protocol}//${parsedUrl.host}`;
 
-    res.json({ title, body, origin });
+    res.json({  body, origin ,content});
   } catch (error) {
     console.error('Error fetching article:', error);
     res.status(error.response?.status || 500).send('Error fetching article');
