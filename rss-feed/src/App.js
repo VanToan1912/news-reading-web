@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Route, Routes, Link, Navigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Navbar from './components/Navbar/Navbar';
 import CategoryPage from './components/CategoryPage/CategoryPage';
 import useArticles from './components/hooks/useArticles';
-import axios from 'axios'
 import Header from './components/Header/Header';
-import ArticleCard from './components/Card/Card';
 import Footer from './components/Footer/Footer';
 import DetailPage from './components/DetailPage/DetailPage';
 import ThemeToggle from './components/ThemeToggle/ThemeToggle';
@@ -31,11 +29,10 @@ const feedURLs = [
   { title: 'Du lịch', url: 'https://tuoitre.vn/rss/du-lich.rss' },
 ];
 
-
 function App() {
   const [selectedCategory, setSelectedCategory] = useState('Trang chủ');
   const articles = useArticles(feedURLs);
-  // console.log(articles);
+
   return (
     <div>
       <Header />
@@ -54,5 +51,3 @@ function App() {
 }
 
 export default App;
-
-

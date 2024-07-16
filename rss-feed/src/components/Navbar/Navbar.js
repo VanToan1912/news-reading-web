@@ -10,13 +10,12 @@ const Navbar = ({ feedURLs, setSelectedCategory }) => {
     navigate(`/${title}`);
   };
 
-  let newsList =
+  let newsList = (
     <nav className='navbar justify-content-center mb-5'>
-      <ul className={` d-flex`}>
+      <ul className={`d-flex`}>
         {feedURLs.map(feed => (
-          <li className={`list-unstyled mx-2`}>
+          <li className={`list-unstyled mx-2`} key={feed.url}>
             <NavLink
-              key={feed.url}
               to={`/${feed.title}`}
               className={`cate-name w-25 ${classes.navLink}`}
               onClick={() => handleNavLinkClick(feed.title)}
@@ -26,7 +25,8 @@ const Navbar = ({ feedURLs, setSelectedCategory }) => {
           </li>
         ))}
       </ul>
-    </nav>;
+    </nav>
+  );
 
   return (
     <div className='fluid-container'>
