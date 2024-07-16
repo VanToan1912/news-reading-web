@@ -7,6 +7,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import DetailPage from './components/DetailPage/DetailPage';
 import ThemeToggle from './components/ThemeToggle/ThemeToggle';
+import SearchArticle from './components/SearchArticle/SearchArticle';
 
 const feedURLs = [
   { title: 'Trang chủ', url: 'https://tuoitre.vn/rss/tin-moi-nhat.rss' },
@@ -35,14 +36,15 @@ function App() {
 
   return (
     <div>
-      <Header />
       <ThemeToggle />
       <BrowserRouter>
+      <Header />
         <Navbar feedURLs={feedURLs} setSelectedCategory={setSelectedCategory} />
         <Routes>
           <Route path="/:category" element={<CategoryPage articles={articles[selectedCategory] || []} />} />
           <Route path="/" element={<Navigate to="/Trang chủ" replace />} />
           <Route path="/article" element={<DetailPage />} />
+          <Route path="/search" element={<SearchArticle />} />
         </Routes>
       </BrowserRouter>
       <Footer />

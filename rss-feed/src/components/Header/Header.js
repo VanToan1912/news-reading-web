@@ -1,9 +1,28 @@
 import './Header.css'
 import ReactDOM from 'react-dom'
+import React, { useState , useEffect} from 'react';
+import { Link, useNavigate,useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faUser, faHouse } from '@fortawesome/free-solid-svg-icons'
 
 const Header = () => {
+
+  const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const keyword = searchTerm
+    navigate(`/search?keyword=${encodeURIComponent(keyword)}`);
+  };
+
+  useEffect(() => {
+    if (!location.pathname.startsWith('/search')) {
+      setSearchTerm('');
+    }
+  }, [location]);
+
   return (
     <div className="Header">
       <header className="navbar-head">
@@ -16,7 +35,17 @@ const Header = () => {
             <a href="#youtube">YouTube</a>
             <a href="#can-biet">Cần biết</a>
             <a href="#rao-vat">Rao vặt</a>
-            <a href="#tim-kiem"><FontAwesomeIcon icon={faMagnifyingGlass} /></a>
+            <form onSubmit={handleSearch} className="search-form">
+              <input
+                type="text"
+                placeholder="Search articles..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <button type="submit">
+                <FontAwesomeIcon icon={faMagnifyingGlass} />
+              </button>
+            </form>
             <button className="btn-subscribe">Đăng ký Tuổi Trẻ Sao</button>
           </div>
         </div>
