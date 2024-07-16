@@ -54,24 +54,26 @@ const Card = ({ content, contentSnippet, title, link, date }) => {
   const imageUrl = extractImageUrl(content);
 
   return (
-    <div className="article-card row">
-      <div className="col thumnails">
-        <Link to={`/article?url=${encodeURIComponent(link)}`}>
-          {imageUrl && <img src={imageUrl} alt="article" className="img-fluid img-resize" />}
-        </Link>
-      </div>
-      <div className="col box-text">
-        <Link to={`/article?url=${encodeURIComponent(link)}`} className="title-article">
-          <h3 className="box-title-text">
-            {truncate(title, 20)}
-          </h3>
-        </Link>
-        <div className="content-s">
+    <div className='article'>
+      <div className="article-card row">
+        <div className="col thumnails">
+          <Link to={`/article?url=${encodeURIComponent(link)}`}>
+            {imageUrl && <img src={imageUrl} alt="article" className="img-fluid img-resize" />}
+          </Link>
+        </div>
+        <div className="col box-text">
+          <Link to={`/article?url=${encodeURIComponent(link)}`} className="title-article">
+            <h3 className="box-title-text">
+              {title}
+            </h3>
+          </Link>
+          <div className="content-s">
 
-          <div className="content-snippet">
-            <p>
-              {parse(truncate(contentSnippet, 150), options)}
-            </p>
+            <div className="content-snippet">
+              <p>
+                {parse(truncate(contentSnippet, 250), options)}
+              </p>
+            </div>
           </div>
         </div>
       </div>

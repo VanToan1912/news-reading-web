@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import parse from 'html-react-parser';
 import './DetailPage.css';
+import ThemeToggle from '../ThemeToggle/ThemeToggle';
 // @ts-ignore
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -13,7 +14,7 @@ const DetailPage = () => {
   const query = new URLSearchParams(location.search);
   const initialUrl = query.get('url');
   const [url, setUrl] = useState(initialUrl);
-    const [article, setArticle] = useState({ title: '', body: '', origin: '' });
+  const [article, setArticle] = useState({ body: '', origin: '', content: '' });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -39,7 +40,6 @@ const DetailPage = () => {
     fetchArticle();
   }, [url]);
 
-
   useEffect(() =>{
     const savedMode = localStorage.getItem('darkMode');
     const darkMode = savedMode ? JSON.parse(savedMode) : false;
@@ -52,20 +52,16 @@ const DetailPage = () => {
     }
   }, []);
 
-  
   const handleLinkClick = async (e) => {
     e.preventDefault();
     if (e.target.tagName === 'A' && e.target.href) {
       const newUrl = new URL(e.target.href);
       const pathname = newUrl.pathname;
-      
-      
       // Mở liên kết trong tab mới
-      window.open(`/article?url=${encodeURIComponent(article.origin.toString()+pathname)}`, '_blank');
+      window.open(`/article?url=${encodeURIComponent(article.origin.toString() + pathname)}`, '_blank');
     }
   };
 
-  
   
 
   if (loading) return <div>Loading...</div>;
