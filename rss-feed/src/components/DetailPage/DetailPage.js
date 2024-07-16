@@ -1,5 +1,3 @@
-// components/DetailPage/DetailPage.js
-
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -40,6 +38,19 @@ const DetailPage = () => {
 
     fetchArticle();
   }, [url]);
+
+
+  useEffect(() =>{
+    const savedMode = localStorage.getItem('darkMode');
+    const darkMode = savedMode ? JSON.parse(savedMode) : false;
+    if (darkMode) {
+      document.body.style.backgroundColor = '#333';
+      document.body.style.color = '#fff';
+    } else {
+      document.body.style.backgroundColor = '#fff';
+      document.body.style.color = '#000';
+    }
+  }, []);
 
   
   const handleLinkClick = async (e) => {
