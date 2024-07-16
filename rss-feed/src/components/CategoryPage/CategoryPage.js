@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from '../Card/Card.js';
+import ReactPaginate from 'react-paginate';
+import './CategoryPage.css';
 
 const CategoryPage = ({ articles }) => {
+  const [currentPage, setCurrentPage] = useState(0);
+  const articlesPerPage = 6;
+
+  useEffect(() => {
+    setCurrentPage(0); // Reset page to 0 when articles change
+  }, [articles]);
+
+  const handlePageClick = (event) => {
+    setCurrentPage(event.selected);
+  };
+
+  const offset = currentPage * articlesPerPage;
+  const currentArticles = articles.slice(offset, offset + articlesPerPage);
+
   return (
     <div>
-      {articles.map((item, i) => (
+      {currentArticles.map((item, i) => (
         <Card
           key={i}
           content={item.content}
@@ -14,6 +30,19 @@ const CategoryPage = ({ articles }) => {
           date={item.pubDate}
         />
       ))}
+      <ReactPaginate
+        previousLabel={'<'}
+        nextLabel={'>'}
+        breakLabel={'...'}
+        breakClassName={'break-me'}
+        pageCount={Math.ceil(articles.length / articlesPerPage)}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={5}
+        onPageChange={handlePageClick}
+        containerClassName={'pagination'}
+        activeClassName={'active'}
+        forcePage={currentPage} // Force the highlighted page to currentPage
+      />
     </div>
   );
 };
