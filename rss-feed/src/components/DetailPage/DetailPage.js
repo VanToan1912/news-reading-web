@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import parse from 'html-react-parser';
 import './DetailPage.css';
+import ThemeToggle from '../ThemeToggle/ThemeToggle';
 // @ts-ignore
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -15,7 +16,7 @@ const DetailPage = () => {
   const query = new URLSearchParams(location.search);
   const initialUrl = query.get('url');
   const [url, setUrl] = useState(initialUrl);
-    const [article, setArticle] = useState({ body: '', origin: '' ,content : ''});
+  const [article, setArticle] = useState({ body: '', origin: '', content: '' });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -41,16 +42,16 @@ const DetailPage = () => {
     fetchArticle();
   }, [url]);
 
-  
+
   const handleLinkClick = async (e) => {
     e.preventDefault();
     if (e.target.tagName === 'A' && e.target.href) {
       const newUrl = new URL(e.target.href);
       const pathname = newUrl.pathname;
       // console.log(article.origin);
-      
+
       // Mở liên kết trong tab mới
-      window.open(`/article?url=${encodeURIComponent(article.origin.toString()+pathname)}`, '_blank');
+      window.open(`/article?url=${encodeURIComponent(article.origin.toString() + pathname)}`, '_blank');
     }
   };
 
@@ -58,10 +59,13 @@ const DetailPage = () => {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className="detail-page" onClick={handleLinkClick}>
-      {/* <h1>{article.title}</h1> */}
-      <div  dangerouslySetInnerHTML={{ __html: article.content }}></div>
-    </div>
+    <>
+      <ThemeToggle />
+      <div className="detail-page" onClick={handleLinkClick}>
+        {/* <h1>{article.title}</h1> */}
+        <div dangerouslySetInnerHTML={{ __html: article.content }}></div>
+      </div>
+    </>
   );
 };
 
