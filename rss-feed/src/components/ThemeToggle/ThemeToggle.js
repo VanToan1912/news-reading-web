@@ -5,9 +5,15 @@ import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons'
 import './ThemeToggle.css'
 
 const ThemeToggle = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+        // doc trang thai tu localStorage khi components duoc mount
+        const savedMode = localStorage.getItem('darkMode');
+        return savedMode ? JSON.parse(savedMode) : false;
+  });
+
 
   useEffect(() => {
+    localStorage.setItem('darkMode', JSON.stringify(darkMode));
     if (darkMode) {
       document.body.style.backgroundColor = '#333';
       document.body.style.color = '#fff';

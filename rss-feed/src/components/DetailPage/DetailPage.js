@@ -1,5 +1,3 @@
-// components/DetailPage/DetailPage.js
-
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -42,30 +40,38 @@ const DetailPage = () => {
     fetchArticle();
   }, [url]);
 
+  useEffect(() =>{
+    const savedMode = localStorage.getItem('darkMode');
+    const darkMode = savedMode ? JSON.parse(savedMode) : false;
+    if (darkMode) {
+      document.body.style.backgroundColor = '#333';
+      document.body.style.color = '#fff';
+    } else {
+      document.body.style.backgroundColor = '#fff';
+      document.body.style.color = '#000';
+    }
+  }, []);
 
   const handleLinkClick = async (e) => {
     e.preventDefault();
     if (e.target.tagName === 'A' && e.target.href) {
       const newUrl = new URL(e.target.href);
       const pathname = newUrl.pathname;
-      // console.log(article.origin);
-
       // Mở liên kết trong tab mới
       window.open(`/article?url=${encodeURIComponent(article.origin.toString() + pathname)}`, '_blank');
     }
   };
 
+  
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <>
-      <ThemeToggle />
-      <div className="detail-page" onClick={handleLinkClick}>
-        {/* <h1>{article.title}</h1> */}
-        <div dangerouslySetInnerHTML={{ __html: article.content }}></div>
-      </div>
-    </>
+    <div className="detail-page" onClick={handleLinkClick}>
+      <h1>{article.title}</h1>
+      <div  dangerouslySetInnerHTML={{ __html: article.body }}></div>
+    </div>
   );
 };
 
