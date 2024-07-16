@@ -8,7 +8,9 @@ const Header = () => {
     <div className="Header">
       <header className="navbar-head">
         <div className="navbar-top-head">
-          <img src="https://static-tuoitre.tuoitre.vn/tuoitre/web_images/logottonew.svg" alt="Tuoi Tre Online" className="logo" />
+          <a href='index.html'>
+            <img src="https://static-tuoitre.tuoitre.vn/tuoitre/web_images/logottonew.svg" alt="Tuoi Tre Online" className="logo" />
+          </a>
           <div className="navbar-top-links">
             <a href="#podcast">Podcast</a>
             <a href="#youtube">YouTube</a>
