@@ -44,7 +44,7 @@ function App() {
           <Route path="/:category" element={<CategoryPage articles={articles[selectedCategory] || []} />} />
           <Route path="/" element={<Navigate to="/Trang chủ" replace />} />
           <Route path="/article" element={<DetailPage />} />
-          <Route path="/search" element={<SearchArticle />} /> {/* Add route for SearchArticle */}
+          <Route path="/search" element={<SearchArticle />} />
         </Routes>
       </BrowserRouter>
       <Footer />

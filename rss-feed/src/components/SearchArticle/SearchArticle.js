@@ -1,49 +1,49 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import axios from 'axios';
 import ArticleCard from '../Card/Card';
+import axios from 'axios';
+
 
 
 const SearchArticle = () => {
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const keyword = query.get('keyword');
-  const [searchResults, setSearchResults] = useState([]);
+  const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchSearchResults = async () => {
+    const fetchArticles = async () => {
+      setLoading(true);
+      setError(null);
       try {
-        const response = await axios.get(`http://localhost:4000/search/${encodeURIComponent(keyword)}`);
-        setSearchResults(response.data);
+        const response = await axios.get(`http://localhost:4000/api/search?keyword=${encodeURIComponent(keyword)}`);
+        setArticles(response.data);
         setLoading(false);
       } catch (error) {
-        setError(`Error fetching search results: ${error.message}`);
+        setError('Lỗi khi tải bài báo');
         setLoading(false);
       }
     };
 
-    fetchSearchResults();
+    fetchArticles();
   }, [keyword]);
+
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className="category-page">
-      <h2>Search Results for "{keyword}":</h2>
-      <div className="article-list">
-        {searchResults.map((article, index) => (
-          <ArticleCard
-            key={index}
-            title={article.title}
-            contentSnippet={article.contentSnippet}
-            link={article.link}
-            content={article.content}
-          />
-        ))}
-      </div>
+    <div className="search-articles">
+      <h2>Kết quả tìm kiếm cho: {keyword}</h2>
+      {articles.length > 0 ? (
+        articles.map(article => (
+          <ArticleCard key={article.link} {...article} />
+        ))
+      ) : (
+        <p>Không có kết quả tìm kiếm, vui lòng thử lại.</p>
+      )}
     </div>
   );
 };

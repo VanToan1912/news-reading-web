@@ -43,6 +43,11 @@ const parseAllFeeds = async () => {
 }
 parseAllFeeds();
 
+const removeAccents = (str) => {
+  return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D');
+};
+
+
 let app = express();
 app.use(cors());
 
@@ -74,12 +79,16 @@ app.get('/api/article', async (req, res) => {
   }
 });
 
-app.get('/search/:keyword', (req, res) => {
-  const { keyword } = req.params;
-  const results = articles.filter(article => article.title.toLowerCase().includes(keyword.toLowerCase()));
-  res.json(results);
-});
+app.get('/api/search', (req, res) => {
+  const { keyword } = req.query;
+  const lowerKeyword = removeAccents(keyword.toLowerCase());
 
+  const filteredArticles = articles.filter(article =>
+    removeAccents(article.title.toLowerCase()).includes(lowerKeyword)
+  );
+
+  res.json(filteredArticles);
+});
 
 const port = 4000;
 const server = app.listen(port, () => {
