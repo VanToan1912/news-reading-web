@@ -74,6 +74,12 @@ app.get('/api/article', async (req, res) => {
   }
 });
 
+app.get('/search/:keyword', (req, res) => {
+  const { keyword } = req.params;
+  const results = articles.filter(article => article.title.toLowerCase().includes(keyword.toLowerCase()));
+  res.json(results);
+});
+
 
 const port = 4000;
 const server = app.listen(port, () => {
