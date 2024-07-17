@@ -14,6 +14,7 @@ const Header = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     const keyword = searchTerm
+    // console.log(keyword);
     navigate(`/search?keyword=${encodeURIComponent(keyword)}`);
   };
 
