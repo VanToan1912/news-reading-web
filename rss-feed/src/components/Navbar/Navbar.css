@@ -18,8 +18,8 @@ ul {
   transition: all 0.3s ease-in-out;
 }
 .cate-name:hover {
-  transition: all 0.3s ease-in-out;
-  color: #DD0B13;
+  transition: all 0.3s ease-in-out !important;
+  color: #DD0B13 !important;
 }
 
 .navbar.active {
@@ -29,5 +29,5 @@ ul {
   background-color: #fff;
 }
 .navbar a.active {
-  color: #DD0B13;
+  color: #DD0B13 !important;
 }/*# sourceMappingURL=Navbar.css.map */

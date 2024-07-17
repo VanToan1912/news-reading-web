@@ -40,17 +40,55 @@ const DetailPage = () => {
     fetchArticle();
   }, [url]);
 
+
+
+  const [darkMode, setDarkMode] = useState(() => {
+    // doc trang thai tu localStorage khi components duoc mount
+    const savedDarkMode = localStorage.getItem('darkMode');
+    return savedDarkMode !== null ? JSON.parse(savedDarkMode) : false;
+});
+
+
   useEffect(() => {
-    const savedMode = localStorage.getItem('darkMode');
-    const darkMode = savedMode ? JSON.parse(savedMode) : false;
+    localStorage.setItem('darkMode', JSON.stringify(darkMode));
+    const darkColor = '#DBE1E1';
+    const lightColor = '#333';
+    const classArray = ['box-category-top'];
+
+    const updateElementStyles = (classNames, darkMode) => {
+      classNames.forEach(className => {
+        document.querySelectorAll(`.${className}`).forEach(element => {
+          element.style.color = darkMode ? darkColor : lightColor;
+        });
+      });
+    };
+
     if (darkMode) {
       document.body.style.backgroundColor = '#333';
-      document.body.style.color = '#fff';
     } else {
       document.body.style.backgroundColor = '#fff';
-      document.body.style.color = '#000';
+     
+   
     }
-  }, []);
+
+    updateElementStyles(classArray, darkMode);
+  }, [darkMode]);
+
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
+  };
+
+  // useEffect(() => {
+  //   const savedMode = localStorage.getItem('darkMode');
+  //   const darkMode = savedMode ? JSON.parse(savedMode) : false;
+  //   if (darkMode) {
+  //     document.body.style.backgroundColor = '#333';
+  //     document.body.style.color = '#fff';
+  //   } else {
+  //     document.body.style.backgroundColor = '#fff';
+  //     document.body.style.color = '#000';
+  //   }
+  // }, []);
 
   const handleLinkClick = async (e) => {
     e.preventDefault();

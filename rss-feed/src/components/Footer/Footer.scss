@@ -2,11 +2,13 @@
     padding: 20px 0;
     border-top: 2px solid #ff0000;
     font-size: 12px;
+    
   
     .footer-content {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
+      
     }
   
     .logo {
@@ -58,6 +60,10 @@
       &:hover {
         background-color: #0056b3;
       }
+    }
+
+    .footer-content, .footer-content a{
+      transition: 0.3s ease-in-out all;
     }
   }
   

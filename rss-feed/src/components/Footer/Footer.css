@@ -43,4 +43,7 @@
 }
 .footer .signup-button:hover {
   background-color: #0056b3;
+}
+.footer .footer-content, .footer .footer-content a {
+  transition: 0.3s ease-in-out all;
 }/*# sourceMappingURL=Footer.css.map */
