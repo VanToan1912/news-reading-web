@@ -19,7 +19,7 @@
       }
     }
 
-    .box-title-text {
+    .box-title-text  {
       font-weight: 500;
       font-size: 20px;
       line-height: 24px;
@@ -29,7 +29,7 @@
       font-size: 22px;
 
       &:hover {
-        color: #DD0B13;
+        color: #DD0B13 !important;
       }
     }
   }
@@ -50,5 +50,6 @@
     display: block;
     overflow: hidden;
     max-height: 110px;
+    transition: 0.3s ease-in-out all;
   }
 }

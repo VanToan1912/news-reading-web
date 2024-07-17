@@ -22,7 +22,7 @@ const Navbar = ({ feedURLs, setSelectedCategory }) => {
   $(window).on('scroll', handleScroll);
 
   let newsList = (
-    <nav className='navbar justify-content-center'>
+    <nav className='navbar justify-content-center nav-dark-mode'>
       <ul className={`d-flex m-0`}>
         {feedURLs.map(feed => (
           <li className={`list-unstyled mx-2`} key={feed.url}>

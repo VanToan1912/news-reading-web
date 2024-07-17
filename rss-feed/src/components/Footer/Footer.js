@@ -24,7 +24,7 @@ function Footer() {
           <p>Địa chỉ: 60A Hoàng Văn Thụ, P.9, Q.Phú Nhuận, Tp. Hồ Chí Minh</p>
           <p>Hotline: 0918.033.133 - Email: tto@tuoitre.com.vn</p>
           <p>Phòng Quảng Cáo Báo Tuổi Trẻ: 028.39974848</p>
-          <p>
+          <p className >
             <a href="#advertise">Liên hệ Quảng cáo</a> | <a href="#privacy">Điều khoản bảo mật</a> | <a href="#feedback">Liên hệ góp ý</a>
           </p>
         </div>
