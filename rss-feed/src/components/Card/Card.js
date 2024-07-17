@@ -1,10 +1,8 @@
 import React from 'react';
-import parse, { domToReact } from 'html-react-parser';
+import parse from 'html-react-parser';
 import './Card.css';
-// @ts-ignore
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
-
 
 // Trích xuất URL hình ảnh từ content
 const extractImageUrl = (content) => {
@@ -13,67 +11,32 @@ const extractImageUrl = (content) => {
   return match ? match[1] : '';
 };
 
-// hàm để cất nội dung để hiển thị tối đa maxLength ký tự
+// hàm dể cất nội dung để hiển thị tối da maxLength ký tự
 const truncate = (content, maxLength) => {
-  if (content.length > maxLength) {
-    return content.substring(0, maxLength) + "...";
-  } else {
-    return content;
-  }
+  return content.length > maxLength ? content.substring(0, maxLength) + "..." : content;
 };
 
 const Card = ({ content, contentSnippet, title, link, date }) => {
-  const options = {
-    replace: ({ name, attribs, children }) => {
-      if (!attribs) return;
-      if (name === 'a') {
-        return (
-          <a
-            href={attribs.href}
-            onClick={(e) => {
-              if (!attribs.href.startsWith('http')) {
-                e.preventDefault();
-                console.error('Invalid link:', attribs.href);
-                return;
-              }
-              // Handle other conditions if needed
-            }}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {domToReact(children, options)}
-          </a>
-        );
-      }
-      if (name === 'img') {
-        return <img src={attribs.src} alt={attribs.alt || 'image'} />;
-      }
-    },
-  };
-
   const imageUrl = extractImageUrl(content);
 
   return (
     <div className='article'>
       <div className="article-card row">
-        <div className="col thumnails">
+        <div className="col-2 thumbnails">
           <Link to={`/article?url=${encodeURIComponent(link)}`}>
-            {imageUrl && <img src={imageUrl} alt="article" className="img-fluid img-resize" />}
+            {imageUrl && <img src={imageUrl} width="200" height="200" alt="article" className="img-fluid img-resize" />}
           </Link>
         </div>
-        <div className="col box-text">
-          <Link to={`/article?url=${encodeURIComponent(link)}`} className="title-article">
+        <div className="col-10 box-text">
+          <Link to={`/article?url=${encodeURIComponent(link)}`} className="title-article text-decoration-none">
             <h3 className="box-title-text">
               {title}
             </h3>
           </Link>
-          <div className="content-s">
-
-            <div className="content-snippet">
-              <p>
-                {parse(truncate(contentSnippet, 250), options)}
-              </p>
-            </div>
+          <div className="content-snippet">
+            <p>
+              {parse(truncate(contentSnippet, 250))}
+            </p>
           </div>
         </div>
       </div>

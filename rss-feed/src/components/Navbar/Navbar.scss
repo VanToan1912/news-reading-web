@@ -22,3 +22,18 @@ ul {
     color: #DD0B13;
   }
 }
+
+.navbar {
+  &.active {
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    background-color: #fff;
+  }
+
+  a {
+    &.active {
+      color: #DD0B13;
+    }
+  }
+}

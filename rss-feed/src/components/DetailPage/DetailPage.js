@@ -40,7 +40,7 @@ const DetailPage = () => {
     fetchArticle();
   }, [url]);
 
-  useEffect(() =>{
+  useEffect(() => {
     const savedMode = localStorage.getItem('darkMode');
     const darkMode = savedMode ? JSON.parse(savedMode) : false;
     if (darkMode) {
@@ -57,20 +57,22 @@ const DetailPage = () => {
     if (e.target.tagName === 'A' && e.target.href) {
       const newUrl = new URL(e.target.href);
       const pathname = newUrl.pathname;
+      // console.log(article.origin);
+
       // Mở liên kết trong tab mới
       window.open(`/article?url=${encodeURIComponent(article.origin.toString() + pathname)}`, '_blank');
     }
   };
 
-  
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
-
   return (
-    <div className="detail-page" onClick={handleLinkClick}>
-      <h1>{article.title}</h1>
-      <div  dangerouslySetInnerHTML={{ __html: article.body }}></div>
-    </div>
+    <>
+      <ThemeToggle />
+      <div className="detail-page" onClick={handleLinkClick}>
+        <div className='container' dangerouslySetInnerHTML={{ __html: article.content }}></div>
+      </div>
+    </>
   );
 };
 

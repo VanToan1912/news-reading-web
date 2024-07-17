@@ -19,7 +19,7 @@ const CategoryPage = ({ articles }) => {
   const currentArticles = articles.slice(offset, offset + articlesPerPage);
 
   return (
-    <div>
+    <div className='mt-4'>
       {currentArticles.map((item, i) => (
         <Card
           key={i}

@@ -1,6 +1,6 @@
 .article {
   margin: 20px;
-  
+
   .article-card {
     margin: auto;
     max-width: 80%;
@@ -21,20 +21,17 @@
 
     .box-title-text {
       font-weight: 500;
-      font-size: 18px;
+      font-size: 20px;
       line-height: 24px;
       color: #222;
       display: block;
+      transition: 0.3s ease-in-out all;
+      font-size: 22px;
+
+      &:hover {
+        color: #DD0B13;
+      }
     }
-
-    // a {
-    //   color: #222;
-    //   text-decoration: none;
-
-    //   &:hover {
-    //     color: red;
-    //   }
-    // }
   }
 
   .title-article {
@@ -47,7 +44,7 @@
 
   .content-snippet {
     font-weight: 400;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 22px;
     color: #565656;
     display: block;
