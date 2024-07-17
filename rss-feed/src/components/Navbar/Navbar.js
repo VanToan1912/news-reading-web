@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import classes from './Navbar.css';
+import $ from 'jquery'
 
 const Navbar = ({ feedURLs, setSelectedCategory }) => {
   const navigate = useNavigate();
@@ -10,14 +11,24 @@ const Navbar = ({ feedURLs, setSelectedCategory }) => {
     navigate(`/${title}`);
   };
 
+  const handleScroll = () => {
+    if ($(window).scrollTop() > 100) {
+      $(".navbar").addClass('active');
+    } else {
+      $(".navbar").removeClass('active');
+    }
+  };
+
+  $(window).on('scroll', handleScroll);
+
   let newsList = (
-    <nav className='navbar justify-content-center mb-5'>
-      <ul className={`d-flex`}>
+    <nav className='navbar justify-content-center'>
+      <ul className={`d-flex m-0`}>
         {feedURLs.map(feed => (
           <li className={`list-unstyled mx-2`} key={feed.url}>
             <NavLink
               to={`/${feed.title}`}
-              className={`cate-name w-25 ${classes.navLink}`}
+              className={`cate-name w-25`}
               onClick={() => handleNavLinkClick(feed.title)}
             >
               {feed.title}

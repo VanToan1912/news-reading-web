@@ -4,12 +4,12 @@ import ArticleCard from '../Card/Card';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import '../CategoryPage/CategoryPage.css';
+import './SearchArticle.css';
 
 const SearchArticle = () => {
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const keyword = query.get('keyword');
-  // console.log(query.get('keyword'))
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -23,7 +23,6 @@ const SearchArticle = () => {
       try {
         const response = await axios.get(`http://localhost:4000/api/search?keyword=${encodeURIComponent(keyword)}`);
         setArticles(response.data);
-        // console.log(response);
         setLoading(false);
       } catch (error) {
         setError('Lỗi khi tải bài báo');
@@ -46,6 +45,7 @@ const SearchArticle = () => {
 
   return (
     <div className="search-articles">
+
       <h2>Kết quả tìm kiếm cho: {keyword}</h2>
       {currentArticles.length > 0 ? (
         currentArticles.map(article => (
