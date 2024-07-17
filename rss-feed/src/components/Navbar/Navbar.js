@@ -11,13 +11,13 @@ const Navbar = ({ feedURLs, setSelectedCategory }) => {
     navigate(`/${title}`);
   };
 
-  const handleScroll = () => {
-    if ($(window).scrollTop() > 100) {
-      $(".navbar").addClass('active');
-    } else {
-      $(".navbar").removeClass('active');
-    }
-  };
+  // const handleScroll = () => {
+  //   if ($(window).scrollTop() > 100) {
+  //     $(".navbar").addClass('active');
+  //   } else {
+  //     $(".navbar").removeClass('active');
+  //   }
+  // };
 
   $(window).on('scroll', handleScroll);
 
