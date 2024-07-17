@@ -36,13 +36,13 @@ const Header = () => {
             <a href="#can-biet">Cần biết</a>
             <a href="#rao-vat">Rao vặt</a>
             <form onSubmit={handleSearch} className="search-form">
-              <input
+              <input className='search-box'
                 type="text"
-                placeholder="Search articles..."
+                placeholder="Tìm Kiếm"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
-              <button type="submit">
+              <button type="submit" className='search-btn'>
                 <FontAwesomeIcon icon={faMagnifyingGlass} />
               </button>
             </form>
