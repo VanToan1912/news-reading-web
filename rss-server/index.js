@@ -81,10 +81,11 @@ app.get('/api/article', async (req, res) => {
 
 app.get('/api/search', (req, res) => {
   const { keyword } = req.query;
-  const lowerKeyword = removeAccents(keyword.toLowerCase());
+  console.log(req.query);
+  const lowerKeyword = removeAccents(keyword.toLowerCase()).replace(/\s+/g, '');
 
   const filteredArticles = articles.filter(article =>
-    removeAccents(article.title.toLowerCase()).includes(lowerKeyword)
+    removeAccents(article.title.toLowerCase().replace(/\s+/g, '')).includes(lowerKeyword)
   );
 
   res.json(filteredArticles);
