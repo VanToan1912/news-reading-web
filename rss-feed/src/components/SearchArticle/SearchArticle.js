@@ -5,6 +5,7 @@ import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import '../CategoryPage/CategoryPage.css';
 import './SearchArticle.css';
+import ScrollToTopButton from '../ScrollToTopButton/ScrollToTopButton';
 
 const SearchArticle = () => {
   const location = useLocation();
@@ -69,6 +70,7 @@ const SearchArticle = () => {
           forcePage={currentPage}
         />
       )}
+      <ScrollToTopButton />
     </div>
   );
 };
