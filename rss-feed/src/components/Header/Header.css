@@ -7,6 +7,25 @@
   color: #ffffff;
   padding: 10px 0;
 }
+.navbar-top-head .search-box {
+  background-color: white;
+  border: 0;
+  font-size: 14px;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+.navbar-top-head .search-btn {
+  background-color: white;
+  font-size: 14px;
+  padding: 2px 5px;
+  border: 0;
+  margin-left: 2px;
+  border-radius: 2px;
+  font-weight: lighter;
+}
+.navbar-top-head .search-btn:hover {
+  background-color: gray;
+}
 .navbar-top-head,
 .navbar-top-head .navbar-bottom-head {
   display: flex;
